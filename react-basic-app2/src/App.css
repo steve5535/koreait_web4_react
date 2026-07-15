@@ -1,0 +1,161 @@
+.app {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  background-color: white;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.header h1 {
+  margin: 0 0 16px;
+  font-size: 44px;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.section {
+  padding: 28px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  background-color: white;
+}
+
+.sectionHeader {
+  margin-bottom: 20px;
+}
+
+.sectionHeader p {
+  margin: 0 0 8px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sectionHeader h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.sectionHeader span {
+  color: #555;
+  line-height: 1.6;
+}
+
+.counterBox,
+.timerBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  background-color: #fafafa;
+}
+
+.counterBox strong,
+.timerBox strong {
+  font-size: 40px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 14px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #f5f5f5;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formBox label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #333;
+  font-weight: 700;
+}
+
+.formBox input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.previewBox {
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background-color: #fafafa;
+}
+
+.previewBox p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.message {
+  margin: 0;
+  padding: 14px;
+  border-radius: 12px;
+  background-color: #eef2ff;
+  color: #333;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .header h1 {
+    font-size: 34px;
+  }
+
+  .counterBox,
+  .timerBox {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
