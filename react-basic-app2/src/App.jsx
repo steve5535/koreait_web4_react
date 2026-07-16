@@ -1,18 +1,11 @@
-import CounterBox from "./components/CounterBox";
-import "./App.css";
-import NameForm from "./components/NameForm";
-import FocusInput from "./components/FocusInput";
-import DocumentTitle from "./components/DocumentTitle";
-import TimerBox from "./components/TimerBox";
+import CountApp from "./components/CountApp";
+import CountButton from "./components/CountButton";
+
 
 function App() {
   return (
     <main className="app">
-      <CounterBox />
-      <NameForm />
-      <FocusInput />
-      <DocumentTitle />
-      <TimerBox />
+      <CountApp />
     </main>
   );
 }
