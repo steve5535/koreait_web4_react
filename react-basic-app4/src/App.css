@@ -1,0 +1,218 @@
+.app {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  background-color: white;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.header h1 {
+  margin: 0 0 16px;
+  font-size: 44px;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.section {
+  padding: 28px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.sectionHeader {
+  margin-bottom: 24px;
+}
+
+.sectionHeader p {
+  margin: 0 0 8px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sectionHeader h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.sectionHeader span {
+  color: #555;
+  line-height: 1.6;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid #eee;
+  border-radius: 18px;
+  background-color: #fafafa;
+}
+
+.panel h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.panel p {
+  margin: 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+.panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #333;
+  font-weight: 700;
+}
+
+.panel input,
+.panel textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 400;
+  resize: vertical;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 14px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #f5f5f5;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.toggleOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  background-color: white;
+}
+
+.toggleOption div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.toggleOption strong {
+  color: #333;
+}
+
+.toggleOption span {
+  color: #666;
+  line-height: 1.5;
+}
+
+.toggleOption input {
+  width: 20px;
+  height: 20px;
+}
+
+.summaryBox {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 14px;
+  background-color: white;
+}
+
+.summaryBox p {
+  color: #555;
+}
+
+.counterValue {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.savedBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  background-color: white;
+}
+
+.savedBox span {
+  color: #666;
+  font-size: 14px;
+}
+
+.savedBox strong {
+  color: #333;
+  font-size: 24px;
+}
+
+.emptyMessage {
+  padding: 18px;
+  border: 1px dashed #ddd;
+  border-radius: 14px;
+  background-color: white;
+  color: #666;
+}
+
+@media (max-width: 860px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .header h1 {
+    font-size: 34px;
+  }
+}
