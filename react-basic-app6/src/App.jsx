@@ -1,6 +1,8 @@
 import ThemeProvider from "./contexts/ThemeProvider";
 import Header from "./contexts/Header";
 import UserProvider from "./contexts/UserProvider";
+import "./App.css";
+import DashBoard from "./contexts/DashBoard";
 
 function App() {
   return (
@@ -14,7 +16,10 @@ function App() {
 
 function AppContent() {
   return (
-    <Header />
+    <main className="app">
+      <Header />
+      <DashBoard />
+    </main>
   );
 }
 

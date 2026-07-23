@@ -3,7 +3,7 @@ import { createContext, useContext, useMemo, useState } from "react";
 const UserContext = createContext(null);
 
 const initialUser = {
-    name: "React Learner",
+    name: "성선혁",
     email: "learner@example.com",
     role: "수강생",
 };
