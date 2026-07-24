@@ -1,10 +1,12 @@
 import './App.css'
-import ZustandSample from './components/ZustandSample'
+import CartPanel from './components/CartPanel'
+import ProductList from './components/ProductList'
 
 function App() {
   return (
     <div>
-      <ZustandSample />
+      <ProductList />
+      <CartPanel />
     </div>
   )
 }
