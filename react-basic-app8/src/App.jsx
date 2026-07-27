@@ -1,10 +1,13 @@
 import './App.css'
+import Header from './components/Header'
+import PostExplorer from './components/PostExplorer'
 
 function App() {
   return (
-    <div>
-      응
-    </div>
+    <main className='app'>
+      <Header />
+      <PostExplorer />
+    </main>
   )
 }
 
