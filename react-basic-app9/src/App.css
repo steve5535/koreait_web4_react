@@ -1,0 +1,201 @@
+.app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  padding: 36px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  background-color: white;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.header h1 {
+  margin: 0 0 12px;
+  font-size: 44px;
+  line-height: 1.2;
+}
+
+.header span {
+  color: #555;
+  line-height: 1.6;
+}
+
+.gameLayout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.sidePanel {
+  display: grid;
+  gap: 16px;
+}
+
+.statusCard,
+.scoreBoard,
+.controlPanel {
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.statusCard p {
+  margin: 0 0 8px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.statusCard h2 {
+  margin: 0 0 10px;
+  font-size: 30px;
+}
+
+.statusCard span {
+  color: #555;
+  line-height: 1.6;
+}
+
+.statusCard.winner {
+  border-color: #bbf7d0;
+  background-color: #f0fdf4;
+}
+
+.statusCard.draw {
+  border-color: #fed7aa;
+  background-color: #fff7ed;
+}
+
+.scoreBoard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.scoreBoard div {
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.scoreBoard span {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 13px;
+}
+
+.scoreBoard strong {
+  font-size: 28px;
+}
+
+.controlPanel {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 14px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #f5f5f5;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  background-color: white;
+}
+
+.square {
+  aspect-ratio: 1;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #fafafa;
+  color: #111827;
+  font-size: clamp(48px, 8vw, 88px);
+  font-weight: 800;
+  line-height: 1;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.square:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background-color: #f0f9ff;
+}
+
+.square.filled {
+  background-color: #f8fafc;
+}
+
+.square.winning {
+  border-color: #22c55e;
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+@media (max-width: 860px) {
+  .gameLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .header h1 {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 560px) {
+  .scoreBoard {
+    grid-template-columns: 1fr;
+  }
+
+  .controlPanel {
+    flex-direction: column;
+  }
+
+  .controlPanel button {
+    width: 100%;
+  }
+
+  .board {
+    gap: 8px;
+    padding: 14px;
+  }
+
+  .square {
+    border-radius: 14px;
+  }
+}
