@@ -1,0 +1,213 @@
+.app {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  padding: 36px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.header h1 {
+  margin: 0 0 12px;
+  font-size: 42px;
+  line-height: 1.2;
+}
+
+.header span {
+  color: #555;
+  line-height: 1.6;
+}
+
+.editorCard,
+.filterCard,
+.actionCard,
+.emptyCard {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 18px;
+  margin-bottom: 16px;
+  background-color: white;
+}
+
+.todoForm {
+  display: flex;
+  gap: 8px;
+}
+
+.todoForm input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font: inherit;
+}
+
+button {
+  padding: 10px 14px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #f5f5f5;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+button.active {
+  background-color: #333;
+  color: white;
+}
+
+button.danger {
+  border-color: #c62828;
+  color: #c62828;
+}
+
+button.danger:hover {
+  background-color: #ffebee;
+}
+
+.formError {
+  margin: 12px 0 0;
+  color: #c62828;
+  font-size: 14px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.statsGrid div {
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 18px;
+  background-color: white;
+  text-align: center;
+}
+
+.statsGrid span {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 13px;
+}
+
+.statsGrid strong {
+  font-size: 28px;
+}
+
+.filterCard {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.todoList {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0 0 16px;
+  list-style: none;
+}
+
+.todoItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 18px;
+  background-color: white;
+}
+
+.todoItem label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+}
+
+.todoItem input {
+  width: 18px;
+  height: 18px;
+}
+
+.todoItem.done span {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.todoMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todoMeta small {
+  color: #777;
+  white-space: nowrap;
+}
+
+.emptyCard {
+  color: #666;
+  text-align: center;
+}
+
+.emptyCard p {
+  margin: 0;
+}
+
+.actionCard {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 700px) {
+  .header h1 {
+    font-size: 34px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .todoForm,
+  .todoItem,
+  .todoMeta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .todoForm button,
+  .todoMeta button,
+  .actionCard button {
+    width: 100%;
+  }
+}
