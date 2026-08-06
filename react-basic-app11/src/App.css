@@ -1,0 +1,226 @@
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  padding: 28px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  background-color: white;
+}
+
+.header p {
+  margin: 0 0 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.header h1 {
+  margin: 0 0 12px;
+  font-size: 40px;
+}
+
+.header span {
+  color: #555;
+  line-height: 1.6;
+}
+
+.navigation {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.navigation a {
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.navigation a:hover {
+  background-color: #f5f5f5;
+}
+
+.navigation a.active {
+  background-color: #333;
+  color: white;
+}
+
+.content {
+  min-height: 420px;
+}
+
+.page {
+  padding: 28px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.pageHeader {
+  margin-bottom: 24px;
+}
+
+.pageHeader.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.pageHeader p {
+  margin: 0 0 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.pageHeader h2 {
+  margin: 0 0 12px;
+  font-size: 32px;
+}
+
+.pageHeader span {
+  color: #555;
+  line-height: 1.6;
+}
+
+.actionGroup {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.buttonLink,
+button {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background-color: white;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.buttonLink:hover,
+button:hover {
+  background-color: #f5f5f5;
+}
+
+.buttonLink.primary {
+  background-color: #333;
+  color: white;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.postCard {
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.postCard a {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  color: #333;
+  text-decoration: none;
+}
+
+.postCard a:hover {
+  background-color: #fafafa;
+}
+
+.postCard strong {
+  font-size: 18px;
+}
+
+.postCard span,
+.postCard small {
+  color: #666;
+}
+
+.detailBox {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+}
+
+.detailBox h3 {
+  margin: 0 0 12px;
+}
+
+.detailBox p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.postForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.postForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+.postForm input,
+.postForm textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.notFound {
+  text-align: center;
+}
+
+.notFound h2 {
+  margin: 0 0 12px;
+  font-size: 64px;
+}
+
+.notFound p {
+  margin: 0 0 20px;
+  color: #666;
+}
+
+@media (max-width: 640px) {
+  .header h1 {
+    font-size: 32px;
+  }
+
+  .pageHeader.row {
+    flex-direction: column;
+  }
+
+  .pageHeader h2 {
+    font-size: 26px;
+  }
+}
