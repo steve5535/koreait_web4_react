@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "React Router로 게시판 만들기",
+      "content": "React Router를 사용해 목록, 상세, 작성, 수정 페이지를 구성합니다.",
+      "author": "홍길동",
+      "createdAt": "2026. 7. 1. 오후 2:30:00",
+      "updatedAt": "2026. 7. 1. 오후 2:30:00"
+    },
+    {
+      "id": "2",
+      "title": "React Query로 서버 상태관리하기",
+      "content": "React Query를 사용해 게시글 목록과 상세 데이터를 조회합니다.",
+      "author": "김철수",
+      "createdAt": "2026. 7. 1. 오후 3:00:00",
+      "updatedAt": "2026. 7. 1. 오후 3:00:00"
+    },
+    {
+      "id": "3",
+      "title": "게시글 작성과 수정 흐름 이해하기",
+      "content": "POST, PATCH, DELETE 요청을 사용해 게시글 데이터를 변경합니다.",
+      "author": "이영희",
+      "createdAt": "2026. 7. 1. 오후 4:00:00",
+      "updatedAt": "2026. 7. 1. 오후 4:00:00"
+    }
+  ]
+}
