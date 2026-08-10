@@ -1,28 +1,30 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-
-const mockPosts = [
-    {
-        id: "1",
-        title: "React Router로 게시판 만들기",
-        author: "홍길동",
-        createdAt: "2026. 7. 1. 오후 2:30:00",
-    },
-    {
-        id: "2",
-        title: "React Query로 서버 상태관리하기",
-        author: "김철수",
-        createdAt: "2026. 7. 1. 오후 3:00:00",
-    },
-];
+import { getPosts } from "../api/posts";
+import EmptyMessage from "../components/EmptyMessage";
+import ErrorMessage from "../components/ErrorMessage";
+import LoadingMessage from "../components/LoadingMessage";
+import PostList from "../components/PostList";
+import { queryKeys } from "../constants/queryKeys";
 
 function PostListPage() {
+    const {
+        data: posts = [],
+        isPending,
+        isError,
+        error,
+    } = useQuery({
+        queryKey: queryKeys.posts,
+        queryFn: getPosts,
+    });
+
     return (
         <section className="page">
             <div className="pageHeader row">
                 <div>
                     <p>Posts</p>
                     <h2>게시글 목록</h2>
-                    <span>게시글 목록은 다음 시간에 서버 API와 연결합니다.</span>
+                    <span>json-server에서 게시글 목록을 조회합니다.</span>
                 </div>
 
                 <Link className="buttonLink primary" to="/posts/new">
@@ -30,17 +32,23 @@ function PostListPage() {
                 </Link>
             </div>
 
-            <ul className="postList">
-                {mockPosts.map((post) => (
-                    <li key={post.id} className="postCard">
-                        <Link to={`/posts/${post.id}`}>
-                            <strong>{post.title}</strong>
-                            <span>작성자: {post.author}</span>
-                            <small>{post.createdAt}</small>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            {isPending && (
+                <LoadingMessage message="게시글 목록을 불러오는 중입니다." />
+            )}
+
+            {isError && (
+                <ErrorMessage
+                    message={error.message || "게시글 목록을 불러오지 못했습니다."}
+                />
+            )}
+
+            {!isPending && !isError && posts.length === 0 && (
+                <EmptyMessage message="게시글이 없습니다." />
+            )}
+
+            {!isPending && !isError && posts.length > 0 && (
+                <PostList posts={posts} />
+            )}
         </section>
     );
 }

@@ -1,14 +1,6 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "React Router로 게시판 만들기",
-      "content": "React Router를 사용해 목록, 상세, 작성, 수정 페이지를 구성합니다.",
-      "author": "홍길동",
-      "createdAt": "2026. 7. 1. 오후 2:30:00",
-      "updatedAt": "2026. 7. 1. 오후 2:30:00"
-    },
-    {
       "id": "2",
       "title": "React Query로 서버 상태관리하기",
       "content": "React Query를 사용해 게시글 목록과 상세 데이터를 조회합니다.",
@@ -23,6 +15,15 @@
       "author": "이영희",
       "createdAt": "2026. 7. 1. 오후 4:00:00",
       "updatedAt": "2026. 7. 1. 오후 4:00:00"
+    },
+    {
+      "id": "AG66wc7p0D0",
+      "title": "안녕하세요",
+      "content": "안녕하세요 성선혁 입니다.",
+      "author": "성선혁",
+      "createdAt": "2026. 8. 9. 오후 9:59:44",
+      "updatedAt": "2026. 8. 9. 오후 9:59:44"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

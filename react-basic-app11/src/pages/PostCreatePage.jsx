@@ -1,13 +1,31 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { createPost } from "../api/posts";
+import PostForm from "../components/PostForm";
+import { queryKeys } from "../constants/queryKeys";
 
 function PostCreatePage() {
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const createMutation = useMutation({
+        mutationFn: createPost,
+        onSuccess: (createdPost) => {
+            queryClient.invalidateQueries({
+                queryKey: queryKeys.posts,
+            });
 
-        alert("다음 시간에 게시글 작성 API를 연결합니다.");
-        navigate("/posts");
+            toast.success("게시글이 등록되었습니다.");
+            navigate(`/posts/${createdPost.id}`);
+        },
+        onError: () => {
+            toast.error("게시글을 등록하지 못했습니다.");
+        },
+    });
+
+    const handleCreate = (formValues) => {
+        createMutation.mutate(formValues);
     };
 
     return (
@@ -16,36 +34,16 @@ function PostCreatePage() {
                 <p>Create</p>
                 <h2>게시글 작성</h2>
                 <span>
-                    제목, 작성자, 내용을 입력하는 작성 폼입니다.
+                    제목, 작성자, 내용을 입력해 새 게시글을 등록합니다.
                 </span>
             </div>
 
-            <form className="postForm" onSubmit={handleSubmit}>
-                <label>
-                    제목
-                    <input placeholder="제목을 입력하세요" />
-                </label>
-
-                <label>
-                    작성자
-                    <input placeholder="작성자를 입력하세요" />
-                </label>
-
-                <label>
-                    내용
-                    <textarea rows={8} placeholder="내용을 입력하세요" />
-                </label>
-
-                <div className="actionGroup">
-                    <button type="button" onClick={() => navigate(-1)}>
-                        취소
-                    </button>
-
-                    <button type="submit">
-                        등록
-                    </button>
-                </div>
-            </form>
+            <PostForm
+                submitLabel="등록"
+                isSubmitting={createMutation.isPending}
+                onSubmit={handleCreate}
+                onCancel={() => navigate("/posts")}
+            />
         </section>
     );
 }
