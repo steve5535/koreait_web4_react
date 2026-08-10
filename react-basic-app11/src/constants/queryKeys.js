@@ -1,4 +1,5 @@
 export const queryKeys = {
     posts: ["posts"],
-    post: (postId) => ["posts", postId],
+    postsList: (filters = {}) => ["posts", "list", filters],
+    post: (postId) => ["posts", "detail", postId],
 };

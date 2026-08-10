@@ -14,8 +14,35 @@ async function handleResponse(response) {
     return JSON.parse(text);
 }
 
-export async function getPosts() {
-    const response = await fetch(BASE_URL);
+function createSearchParams({ keyword }) {
+    const params = new URLSearchParams();
+    const trimmedKeyword = keyword?.trim();
+
+    if (!trimmedKeyword) {
+        return params;
+    }
+
+    params.set(
+        "_where",
+        JSON.stringify({
+            or: [
+                { title: { contains: trimmedKeyword } },
+                { content: { contains: trimmedKeyword } },
+                { author: { contains: trimmedKeyword } },
+            ],
+        })
+    );
+
+    return params;
+}
+
+export async function getPosts({ keyword = "" } = {}) {
+    const params = createSearchParams({ keyword });
+    const queryString = params.toString();
+
+    const url = queryString ? `${BASE_URL}?${queryString}` : BASE_URL;
+
+    const response = await fetch(url);
     return handleResponse(response);
 }
 
