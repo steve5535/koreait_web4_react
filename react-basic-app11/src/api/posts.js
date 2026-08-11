@@ -14,35 +14,42 @@ async function handleResponse(response) {
     return JSON.parse(text);
 }
 
-function createSearchParams({ keyword }) {
+function createSearchParams({ keyword, page, perPage }) {
     const params = new URLSearchParams();
     const trimmedKeyword = keyword?.trim();
 
-    if (!trimmedKeyword) {
-        return params;
-    }
+    params.set("_page", String(page));
+    params.set("_per_page", String(perPage));
 
-    params.set(
-        "_where",
-        JSON.stringify({
-            or: [
-                { title: { contains: trimmedKeyword } },
-                { content: { contains: trimmedKeyword } },
-                { author: { contains: trimmedKeyword } },
-            ],
-        })
-    );
+    if (trimmedKeyword) {
+        params.set(
+            "_where",
+            JSON.stringify({
+                or: [
+                    { title: { contains: trimmedKeyword } },
+                    { content: { contains: trimmedKeyword } },
+                    { author: { contains: trimmedKeyword } },
+                ],
+            })
+        );
+    }
 
     return params;
 }
 
-export async function getPosts({ keyword = "" } = {}) {
-    const params = createSearchParams({ keyword });
-    const queryString = params.toString();
+export async function getPosts({
+    keyword = "",
+    page = 1,
+    perPage = 5,
+} = {}) {
+    const params = createSearchParams({
+        keyword,
+        page,
+        perPage,
+    });
 
-    const url = queryString ? `${BASE_URL}?${queryString}` : BASE_URL;
+    const response = await fetch(`${BASE_URL}?${params.toString()}`);
 
-    const response = await fetch(url);
     return handleResponse(response);
 }
 

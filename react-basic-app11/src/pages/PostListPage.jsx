@@ -1,27 +1,69 @@
-import { useQuery } from "@tanstack/react-query";
+import {
+    keepPreviousData,
+    useQuery,
+} from "@tanstack/react-query";
 import { Link, useSearchParams } from "react-router-dom";
 import { getPosts } from "../api/posts";
 import EmptyMessage from "../components/EmptyMessage";
 import ErrorMessage from "../components/ErrorMessage";
 import LoadingMessage from "../components/LoadingMessage";
+import Pagination from "../components/Pagination";
 import PostList from "../components/PostList";
 import PostSearchForm from "../components/PostSearchForm";
 import { queryKeys } from "../constants/queryKeys";
 
+const POSTS_PER_PAGE = 5;
+
+const DEFAULT_POSTS_RESPONSE = {
+    first: 1,
+    prev: null,
+    next: null,
+    last: 1,
+    pages: 1,
+    items: 0,
+    data: [],
+};
+
+function getValidPage(value) {
+    const page = Number(value);
+
+    if (!Number.isInteger(page) || page < 1) {
+        return 1;
+    }
+
+    return page;
+}
+
 function PostListPage() {
     const [searchParams, setSearchParams] = useSearchParams();
+
     const keyword = searchParams.get("keyword") ?? "";
+    const page = getValidPage(searchParams.get("page"));
 
     const {
-        data: posts = [],
+        data: result = DEFAULT_POSTS_RESPONSE,
         isPending,
         isFetching,
         isError,
         error,
     } = useQuery({
-        queryKey: queryKeys.postsList({ keyword }),
-        queryFn: () => getPosts({ keyword }),
+        queryKey: queryKeys.postsList({
+            keyword,
+            page,
+            perPage: POSTS_PER_PAGE,
+        }),
+        queryFn: () =>
+            getPosts({
+                keyword,
+                page,
+                perPage: POSTS_PER_PAGE,
+            }),
+        placeholderData: keepPreviousData,
     });
+
+    const posts = result.data ?? [];
+    const totalPages = result.pages ?? 1;
+    const totalItems = result.items ?? 0;
 
     const handleSearch = (nextKeyword) => {
         const trimmedKeyword = nextKeyword.trim();
@@ -33,12 +75,28 @@ function PostListPage() {
             nextParams.delete("keyword");
         }
 
+        nextParams.delete("page");
+
         setSearchParams(nextParams);
     };
 
     const handleReset = () => {
         const nextParams = new URLSearchParams(searchParams);
+
         nextParams.delete("keyword");
+        nextParams.delete("page");
+
+        setSearchParams(nextParams);
+    };
+
+    const handlePageChange = (nextPage) => {
+        const nextParams = new URLSearchParams(searchParams);
+
+        if (nextPage <= 1) {
+            nextParams.delete("page");
+        } else {
+            nextParams.set("page", String(nextPage));
+        }
 
         setSearchParams(nextParams);
     };
@@ -54,7 +112,7 @@ function PostListPage() {
                     <p>Posts</p>
                     <h2>게시글 목록</h2>
                     <span>
-                        검색어를 URL Query String으로 관리합니다.
+                        검색어와 페이지 번호를 URL Query String으로 관리합니다.
                     </span>
                 </div>
 
@@ -91,7 +149,19 @@ function PostListPage() {
             )}
 
             {!isPending && !isError && posts.length > 0 && (
-                <PostList posts={posts} />
+                <>
+                    <PostList posts={posts} />
+
+                    <Pagination
+                        page={page}
+                        totalPages={totalPages}
+                        totalItems={totalItems}
+                        prevPage={result.prev}
+                        nextPage={result.next}
+                        isFetching={isFetching}
+                        onPageChange={handlePageChange}
+                    />
+                </>
             )}
         </section>
     );
